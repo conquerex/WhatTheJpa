@@ -1,6 +1,6 @@
 package what.the.jpa.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import what.the.jpa.domain.Member;
@@ -10,9 +10,16 @@ import java.util.List;
 
 @Service
 @Transactional(readOnly = true)
+//@AllArgsConstructor
+@RequiredArgsConstructor // final이 있는것만 생성자 만들어줌
 public class MemberService {
-    @Autowired
-    private MemberRepository memberRepository;
+
+    private final MemberRepository memberRepository;
+
+//    @Autowired // 생성자 하나뿐일 경우 생략 가능
+//    public MemberService(MemberRepository memberRepository) {
+//     ㄱ   this.memberRepository = memberRepository;
+//    }
 
     // 회원 가입
     @Transactional
