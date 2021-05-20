@@ -18,7 +18,7 @@ public class MemberService {
 
 //    @Autowired // 생성자 하나뿐일 경우 생략 가능
 //    public MemberService(MemberRepository memberRepository) {
-//     ㄱ   this.memberRepository = memberRepository;
+//        this.memberRepository = memberRepository;
 //    }
 
     // 회원 가입
