@@ -26,6 +26,7 @@ public class OrderRepository {
     // public List<Order> findAllByCriteria(OrderSearch orderSearch)
 
     public List<Order> findAll(OrderSearch orderSearch) {
+        // todo : QueryDSL로 동적쿼리를 짜야 함. 이후에 다룰 예정. 아래는 동적이지 않다.
         return em.createQuery("select o from Order o join o.member m " +
                 "where o.status = :status " +
                 "and m.name like :name", Order.class)
