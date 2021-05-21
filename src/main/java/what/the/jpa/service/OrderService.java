@@ -11,6 +11,7 @@ import what.the.jpa.domain.item.Item;
 import what.the.jpa.repository.ItemRepository;
 import what.the.jpa.repository.MemberRepository;
 import what.the.jpa.repository.OrderRepository;
+import what.the.jpa.repository.OrderSearch;
 
 import java.util.List;
 
@@ -50,6 +51,7 @@ public class OrderService {
     }
 
     // 취소
+    @Transactional
     public void cancelOrder(Long orderId) {
         // 주문 엔티티 조회
         Order order = orderRepository.findOne(orderId);
@@ -58,7 +60,7 @@ public class OrderService {
     }
 
     // 검색
-//    public List<Order> findOrders(OrderSearch orderSearch) {
-//        return orderRepository.findAll(orderSearch);
-//    }
+    public List<Order> findOrders(OrderSearch orderSearch) {
+        return orderRepository.findAll(orderSearch);
+    }
 }

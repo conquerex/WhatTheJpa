@@ -35,6 +35,7 @@ public class Order {
 
     private LocalDateTime orderDate; // 주문시간
 
+    @Enumerated(EnumType.STRING)
     private OrderStatus status; // 주문상태
 
     // 연관 관계 편입 메서드
@@ -76,6 +77,7 @@ public class Order {
 
         this.setStatus(OrderStatus.CANCEL);
         for (OrderItem orderItem : orderItems) {
+            System.out.println(">>>> orderItem = " + orderItem.toString());
             orderItem.cancel();
         }
     }
