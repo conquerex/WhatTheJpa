@@ -62,6 +62,8 @@ public class ItemController {
 
     @PostMapping("/items/{itemId}/edit")
     public String updateItem(@ModelAttribute("form") BookForm form) {
+        // database를 다녀온, 식별자가 있는 객체
+        // 준영속 엔티티
         Book book = new Book();
         book.setId(form.getId());
         book.setName(form.getName());
@@ -69,8 +71,13 @@ public class ItemController {
         book.setStockQuantity(form.getStockQuantity());
         book.setAuthor(form.getAuthor());
         book.setIsbn(form.getIsbn());
-
         itemService.saveItem(book);
+
+        // 어설프게 엔티티 생성하지 않는 방법
+        // Book book = new Book() ---> 생략
+        // itemService.updateItem(itemId, name, price, stockQuantity);
+        // 혹은 DTO를 만들면 됨
+
         return "redirect:/items";
     }
 }
