@@ -11,6 +11,7 @@ import what.the.jpa.domain.Member;
 import what.the.jpa.service.MemberService;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -37,5 +38,13 @@ public class MemberController {
         member.setAddress(address);
         memberService.join(member);
         return "redirect:/";
+    }
+
+    @GetMapping("/members")
+    public String list(Model model) {
+        // Member보다는 MemberDto를 권장
+        List<Member> members = memberService.findMembers();
+        model.addAttribute("members", members);
+        return "members/memberList";
     }
 }

@@ -12,15 +12,15 @@ import javax.persistence.Embeddable;
 public class Address {
     private String city;
     private String street;
-    private String zimcode;
+    private String zipcode;
 
     protected Address() {
         // 값 타입은 변경 불가능하게 설계
     }
 
-    public Address(String city, String street, String zimcode) {
+    public Address(String city, String street, String zipcode) {
         this.city = city;
         this.street = street;
-        this.zimcode = zimcode;
+        this.zipcode = zipcode;
     }
 }
